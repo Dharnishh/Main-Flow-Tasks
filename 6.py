@@ -1,11 +1,14 @@
-def bubble_sort(arr):
-    n = len(arr)
-    for i in range(n):
-        for j in range(0, n-i-1):
-            if arr[j] > arr[j+1]:
-                arr[j], arr[j+1] = arr[j+1], arr[j]
-    return arr
+def rotate_matrix(matrix):
+    # Transpose the matrix
+    transposed_matrix = list(zip(*matrix))
+    # Reverse each row
+    rotated_matrix = [list(reversed(row)) for row in transposed_matrix]
+    return rotated_matrix
 
 # Example usage
-if __name__ == "__main__":
-    print("Sorted Array:", bubble_sort([64, 34, 25, 12, 22, 11, 90]))
+matrix = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+]
+print(rotate_matrix(matrix))

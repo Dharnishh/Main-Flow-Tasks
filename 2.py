@@ -1,14 +1,17 @@
-def check_balanced_parentheses(s):
-    stack = []
-    parentheses = {'(': ')', '{': '}', '[': ']'}
-    for char in s:
-        if char in parentheses:
-            stack.append(char)
-        elif char in parentheses.values():
-            if not stack or parentheses[stack.pop()] != char:
-                return False
-    return not stack
+def nth_fibonacci(n):
+    if n <= 0:
+        return 0
+    elif n == 1:
+        return 1
+    
+    fib = [0] * (n + 1)
+    fib[1] = 1
+
+    for i in range(2, n + 1):
+        fib[i] = fib[i-1] + fib[i-2]
+    
+    return fib[n]
 
 # Example usage
-if __name__ == "__main__":
-    print("Balanced Parentheses:", check_balanced_parentheses("({[]})"))
+n = 20
+print(nth_fibonacci(n))

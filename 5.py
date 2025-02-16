@@ -1,6 +1,9 @@
-def check_pythagorean_triplet(a, b, c):
-    return a**2 + b**2 == c**2
+import heapq
+
+def k_largest_elements(lst, k):
+    return heapq.nlargest(k, lst)
 
 # Example usage
-if __name__ == "__main__":
-    print("Pythagorean Triplet:", check_pythagorean_triplet(3, 4, 5))
+lst = [3, 2, 1, 5, 6, 4]
+k = 2
+print(k_largest_elements(lst, k))
