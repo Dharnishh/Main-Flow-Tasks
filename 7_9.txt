@@ -1,0 +1,12 @@
+def budget_advisor(expenses, income):
+    total_expenses = sum(expenses)
+    savings = income - total_expenses
+    if savings < 0:
+        return "You are overspending. Consider reducing your expenses."
+    else:
+        return f"You are saving {savings}. Keep it up!"
+
+# Example usage
+expenses = [200, 150, 300, 100]
+income = 1000
+print(budget_advisor(expenses, income))
