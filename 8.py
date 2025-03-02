@@ -1,15 +1,24 @@
-def find_subarray_with_sum(arr, target_sum):
-    current_sum = 0
-    start_index = 0
-    for end_index in range(len(arr)):
-        current_sum += arr[end_index]
-        while current_sum > target_sum and start_index <= end_index:
-            current_sum -= arr[start_index]
-            start_index += 1
-        if current_sum == target_sum:
-            return (start_index, end_index)
-    return -1
+from collections import deque
+
+def word_ladder(begin_word, end_word, word_list):
+    word_set = set(word_list)
+    if end_word not in word_set:
+        return 0
+    queue = deque([(begin_word, 1)])
+    while queue:
+        current_word, level = queue.popleft()
+        for i in range(len(current_word)):
+            for c in 'abcdefghijklmnopqrstuvwxyz':
+                next_word = current_word[:i] + c + current_word[i+1:]
+                if next_word == end_word:
+                    return level + 1
+                if next_word in word_set:
+                    word_set.remove(next_word)
+                    queue.append((next_word, level + 1))
+    return 0
 
 # Example usage
-if __name__ == "__main__":
-    print("Subarray indices:", find_subarray_with_sum([1, 2, 3, 7, 5], 12))
+begin_word = "hit"
+end_word = "cog"
+word_list = ["hot","dot","dog","lot","log","cog"]
+print("Shortest Transformation Sequence Length:", word_ladder(begin_word, end_word, word_list))
